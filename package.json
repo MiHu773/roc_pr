@@ -3,9 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@devexpress/dx-react-core": "^2.1.2",
+    "@devexpress/dx-react-grid": "^2.1.2",
+    "@devexpress/dx-react-grid-bootstrap4": "^2.1.2",
+    "@devexpress/dx-react-grid-material-ui": "^2.1.2",
+    "bootstrap": "^4.3.1",
+    "create-react-class": "^15.6.3",
+    "mdbootstrap": "^4.8.11",
+    "mdbreact": "^4.21.1",
     "react": "^16.10.2",
+    "react-bootstrap-table": "^4.3.1",
+    "react-bootstrap-table-next": "^3.2.1",
+    "react-datatable": "0.0.31",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+    "react-editable-table": "^1.12.32",
+    "react-scripts": "3.2.0",
+    "react-table": "^6.10.3",
+    "reactstrap": "^8.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
