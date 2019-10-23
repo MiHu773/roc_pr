@@ -17,24 +17,23 @@ class DataInput extends React.Component {
     addRow() {
         let rows = [...this.state.rows];
         var newRow = {};
-        for(var key in this.state.inputs)
-        {
+        for (var key in this.state.inputs) {
             newRow[key] = this.state.inputs[key];
         }
         rows.push(newRow);
-        this.setState(this.state.rows = rows);
+        this.setState({rows: rows});
     }
 
     handleChange(columnName, e) {
         let input = this.state.inputs;
         input[columnName] = e.target.value;
-        this.setState(this.state.inputs = input);
+        this.setState({inputs: input});
     }
 
     removeClicked(i) {
         let rows = [...this.state.rows];
         rows.splice(i, 1);
-        this.setState(this.state.rows = rows);
+        this.setState({rows: rows});
     }
 
     render() {
