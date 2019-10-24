@@ -21,6 +21,7 @@ class DataInput extends React.Component {
             newRow[key] = this.state.inputs[key];
         }
         rows.push(newRow);
+        this.props.parentHandler(rows);
         this.setState({rows: rows});
     }
 
@@ -33,6 +34,7 @@ class DataInput extends React.Component {
     removeClicked(i) {
         let rows = [...this.state.rows];
         rows.splice(i, 1);
+        this.props.parentHandler(rows);
         this.setState({rows: rows});
     }
 

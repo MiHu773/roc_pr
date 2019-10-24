@@ -12,23 +12,30 @@ const rowsThresh = [{threshold: 0.2}, {threshold: 0.4}, {threshold: 0.6}, {thres
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.Results = React.createRef();
-        this.Thresholds = React.createRef();
-        this.DataProcessor = new DataProcessor();
-        this.DataProcessor.processRows(rows, rowsThresh);
-        console.log(this.DataProcessor);
+        this.state = {rowsResults: rows, rowsThresholds: rowsThresh};
+        this.state.dataProcessor = new DataProcessor();
+        this.state.dataProcessor.processRows(this.state.rowsResults, this.state.rowsThresholds);
+        this.resultsChangeHandler = this.resultsChangeHandler.bind(this);
+        this.thresholdsChangeHandler = this.thresholdsChangeHandler.bind(this);
+    }
+
+    resultsChangeHandler(rowsResults) {
+        let dp = this.state.dataProcessor;
+        dp.processRows(rowsResults, this.state.rowsThresholds);
+        this.setState({rowsResults: rowsResults, dataProcessor: dp});
+    }
+
+    thresholdsChangeHandler(rowsThresholds) {
+        let dp = this.state.dataProcessor;
+        dp.processRows(this.state.rowsResults, rowsThresholds);
+        this.setState({rowsThresholds: rowsThresholds, dataProcessor: dp});
     }
 
     render() {
-      const results = this.Results.current;
-      console.log(results);
-      //this.DataProcessor.processRows(this.Results.current.state, this.Thresholds.current.state);
-      //console.log(this.Results.current.state);
-      //console.log("aaa");
         return (
             <Row>
-                <Col><DataInput columns={columns} rows={rows} ref={this.Results}/></Col>
-                <Col><DataInput columns={columnsThresh} rows={rowsThresh} ref={this.Thresholds}/></Col>
+                <Col><DataInput columns={columns} rows={rows} parentHandler={this.resultsChangeHandler}/></Col>
+                <Col><DataInput columns={columnsThresh} rows={rowsThresh} parentHandler={this.thresholdsChangeHandler}/></Col>
             </Row>
         );
     }
