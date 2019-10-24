@@ -1,6 +1,6 @@
 import React from 'react';
 import './DataInput.css';
-import {InputGroup, Input, InputGroupAddon, Button, Row, Col} from 'reactstrap';
+import {InputGroup, Input, InputGroupAddon, Button, Row, Col, ListGroup, ListGroupItem} from 'reactstrap';
 
 class DataInput extends React.Component {
     constructor(props) {
@@ -17,9 +17,20 @@ class DataInput extends React.Component {
     addRow() {
         let rows = [...this.state.rows];
         var newRow = {};
-        for (var key in this.state.inputs) {
+        let enable = true;
+        for (let key in this.state.inputs) {
+            this.state.columns.forEach((c) => {
+                if (!c.id.localeCompare(key) == 0) return;
+                let re = new RegExp(c.regex);
+                if (!re.test(this.state.inputs[key])) {
+                    alert("Błąd danych wejściowych. Kolumna: " + c.display + " powinna spełniać: " + c.regex
+                    )
+                    enable = false;
+                }
+            });
             newRow[key] = this.state.inputs[key];
         }
+        if (!enable) return;
         rows.push(newRow);
         this.props.parentHandler(rows);
         this.setState({rows: rows});
@@ -48,13 +59,16 @@ class DataInput extends React.Component {
             let rowData = [];
             for (let j = 0; j < this.state.columns.length; j++) {
                 let columnID = this.state.columns[j].id;
-                rowData.push(<Col>{this.state.rows[i][columnID]}</Col>)
+                rowData.push(<Col className={"rowValues"}>{this.state.rows[i][columnID]}</Col>)
             }
             rows.push(
-                <Row>
-                    {rowData}
-                    <Button color='danger' onClick={this.removeClicked.bind(this, i)}>X</Button>
-                </Row>);
+                <ListGroupItem>
+                    <Row>
+                        {rowData}
+                        <Button color='danger' onClick={this.removeClicked.bind(this, i)}>X</Button>
+                    </Row>
+                </ListGroupItem>);
+
         }
         return (
             <div className={"shrinkeddiv"}>
@@ -64,7 +78,9 @@ class DataInput extends React.Component {
                         <Button color='success' onClick={this.addRow.bind(this)}>+</Button>
                     </InputGroupAddon>
                 </InputGroup>
-                {rows}
+                <ListGroup>
+                    {rows}
+                </ListGroup>
             </div>)
     }
 }

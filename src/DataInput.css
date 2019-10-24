@@ -2,3 +2,13 @@
 {
     display: inline-block;
 }
+
+.rowValues
+{
+    text-align: center;
+}
+
+.rowButton
+{
+    align: right;
+}

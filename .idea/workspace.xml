@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3661151b-b5db-415b-aad3-d4771e7a0c23" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DataProcessor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataInput.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataInput.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +83,8 @@
       <workItem from="1571688531198" duration="310000" />
       <workItem from="1571759679716" duration="18140000" />
       <workItem from="1571845375881" duration="6390000" />
-      <workItem from="1571865606365" duration="1370000" />
+      <workItem from="1571865606365" duration="2111000" />
+      <workItem from="1571917496471" duration="7609000" />
     </task>
     <task id="LOCAL-00001" summary="DataInput implemented but gross">
       <created>1571847740219</created>
@@ -93,7 +93,21 @@
       <option name="project" value="LOCAL" />
       <updated>1571847740219</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add DataProcessor">
+      <created>1571867056993</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1571867056994</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add App state change on rows change">
+      <created>1571918973576</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571918973576</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +128,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="DataInput implemented but gross" />
-    <option name="LAST_COMMIT_MESSAGE" value="DataInput implemented but gross" />
+    <MESSAGE value="Add DataProcessor" />
+    <MESSAGE value="Add App state change on rows change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add App state change on rows change" />
   </component>
 </project>
