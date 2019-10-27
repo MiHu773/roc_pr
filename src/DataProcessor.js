@@ -21,20 +21,59 @@ function processRows(results, thresholds) {
 }
 
 export function prepareRocData(rawData) {
-    return rawData.map((data) => {
-        let sp =  1 - data.specifity.toFixed(2);
-        let rc = data.recall.toFixed(2);
-        return { x: sp, y: rc }
-    }
-    );
+    return rawData
+        .map((data) => {
+            let sp = 1 - data.specifity.toFixed(2);
+            let rc = data.recall.toFixed(2);
+            return { x: sp, y: parseFloat(rc) }
+        }
+        ).sort(compareRoc);
 }
 
 export function prepareRpData(rawData) {
-    return rawData.map((data) => { 
-        let pr = data.precision.toFixed(2);
-        let rc = data.recall.toFixed(2);
-        return { x: rc, y: pr } 
-    });
+    return rawData
+        .map((data) => {
+            let pr = data.precision.toFixed(2);
+            let rc = data.recall.toFixed(2);
+            return { x: parseFloat(rc), y: parseFloat(pr) }
+        }
+        ).sort(comparePr);
+}
+
+function compareRoc(a, b) {
+    if (a.x > b.x){
+        return 1;
+    }
+    else if (a.x < b.x) {
+        return -1;
+    }
+    else if (a.y > b.y) {
+            return 1;
+    }
+    else if (a.y < b.y) {
+            return -1;
+    }
+    else {
+        return 0;
+    }
+}
+
+function comparePr(a, b) {
+    if (a.x > b.x){
+        return 1;
+    }
+    else if (a.x < b.x) {
+        return -1;
+    }
+    else if (a.y > b.y) {
+        return -1;
+    }
+    else if (a.y < b.y) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
 }
 
 class ProcessedRow {

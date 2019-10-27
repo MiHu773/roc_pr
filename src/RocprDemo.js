@@ -53,6 +53,7 @@ class RocprDemo extends React.Component {
     thresholdsChangeHandler(rowsThresholds) {
         this.setState({ rowsThresholds: rowsThresholds });
     }
+    
 
     render() {
 
