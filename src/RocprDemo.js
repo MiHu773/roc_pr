@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Col, Row, Container } from "reactstrap";
-import DataInput from "./DataInput";
+import DataInput from "./component/DataInput";
 
 import processRows, { prepareRocData, prepareRpData } from './DataProcessor';
 import Chart from "./component/Chart"
