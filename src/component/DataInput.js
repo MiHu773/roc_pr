@@ -1,6 +1,6 @@
 import React from 'react';
 import './DataInput.css';
-import { Container, InputGroup, Input, InputGroupAddon, Button, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
+import { Container, InputGroup, Input, InputGroupAddon, Button, Row, Col } from 'reactstrap';
 
 class DataInput extends React.Component {
     constructor(props) {
