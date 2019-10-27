@@ -1,14 +1,47 @@
-.shrinkeddiv
+@media (min-width: 576px) {
+
+.data-container
 {
-    display: inline-block;
+    max-height: 25vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.rowValues
+}
+
+@media (min-width: 1200px) {
+
+.data-container
+{
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+}
+
+.row-data
 {
     text-align: center;
+    border-bottom: 1px solid #ced4da;
 }
 
-.rowButton
+.row-data:last-child
 {
-    align: right;
+    border-bottom: 0px;
 }
+
+.btn-remove {
+    background-color: transparent;
+    border-color: transparent;
+    border-width: 0;
+    color: #dc3545;
+}
+
+.btn-remove:hover, .btn-remove:focus, .btn-remove:active {
+    background-color: #dc3545!important;
+    border-color: #dc3545!important;
+    color: #ffffff!important;
+    box-shadow: 0 0 0 0
+}
+
