@@ -20,3 +20,7 @@
 .App-link {
   color: #09d3ac;
 }
+
+.jumbotron.header {
+  padding: 2.5rem 1.5rem!important;
+}
