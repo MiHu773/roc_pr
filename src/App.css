@@ -22,5 +22,10 @@
 }
 
 .jumbotron.header {
-  padding: 2.5rem 1.5rem!important;
+  padding: 2rem 1.5rem!important;
+  margin-bottom: 0.5rem;
+}
+
+.footer {
+  font-size: 0.75rem;
 }
