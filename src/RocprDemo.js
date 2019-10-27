@@ -64,7 +64,7 @@ class RocprDemo extends React.Component {
                     <Col md="4">
                         <Row >
                             <Col xl="7"className="mb-4" >
-                                <h5>Dane wejściwe</h5>
+                                <h5>Dane wejściowe</h5>
                                 <DataInput columns={columnsRes} rows={rowsRes} parentHandler={this.resultsChangeHandler} />
                             </Col>
                             <Col xl="5" className="mb-4">

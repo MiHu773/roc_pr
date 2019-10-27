@@ -7,8 +7,8 @@ function Chart(props) {
 
     return (
         <div className="text-center">
-            <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={data}>
+            <ResponsiveContainer width="100%" height={280}>
+                <LineChart data={data}  margin={{ top: 5, right: 5, left: 5, bottom: 40 }}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey={"x"} domain={[0, 1]} type="number">
                         <Label value={props.xLabel} offset={-5} position="insideBottom" />
