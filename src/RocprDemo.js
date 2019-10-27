@@ -5,6 +5,7 @@ import DataInput from "./DataInput";
 
 import processRows, { prepareRocData, prepareRpData } from './DataProcessor';
 import Chart from "./component/Chart"
+import ErrorMatrix from './component/ErrorMatrix';
 
 const columnsRes = [{ id: "state", display: "Stan", regex: "1|0" }, {
     id: "result",
@@ -59,24 +60,32 @@ class RocprDemo extends React.Component {
 
         return (
             <Container fluid>
-                <Row>
-                    <Col>
-                        <Row>
-                            <Col className="text-center">
+                <Row  className="text-center justify-content-around">
+                    <Col md="4">
+                        <Row >
+                            <Col xl="7"className="mb-4" >
+                                <h5>Dane wejściwe</h5>
                                 <DataInput columns={columnsRes} rows={rowsRes} parentHandler={this.resultsChangeHandler} />
                             </Col>
-                            <Col className="text-center">
+                            <Col xl="5" className="mb-4">
+                                <h5>Progi</h5>
                                 <DataInput columns={columnsThresh} rows={rowsThresh} parentHandler={this.thresholdsChangeHandler} />
                             </Col>
                         </Row>
                     </Col>
-                    <Col>
-                        <Row>
-                            <Col>
-                                <Chart title="Krzywa ROC" data={prepareRocData(data)} xLabel="1 - swoistość" yLabel="czułość" />
+                    <Col md="8">
+                        <Row className="text-center">
+                            <Col md="12" className="mb-4">
+                                <h5>Macierz pomyłek</h5>
+                                <ErrorMatrix data={data} />
                             </Col>
-                            <Col>
-                                <Chart title="Krzywa PR" data={prepareRpData(data)} xLabel="czułość" yLabel="precyzja" />
+                            <Col md="6" className="mb-4">
+                                <h5>Krzywa ROC</h5>
+                                <Chart data={prepareRocData(data)} xLabel="1 - swoistość" yLabel="czułość" />
+                            </Col>
+                            <Col md="6" className="mb-4">
+                                <h5>Krzywa PR</h5>
+                                <Chart data={prepareRpData(data)} xLabel="czułość" yLabel="precyzja" />
                             </Col>
                         </Row>
                     </Col>
