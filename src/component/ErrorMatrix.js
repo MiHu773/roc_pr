@@ -28,7 +28,9 @@ function renderRow(row) {
 function ErrorMatrix(props) {
 
     let headers = { threshold: "Próg", TP: "Tp", FP: "Fp", TN: "Tn", FN: "Fn" }
-    let content = props.data.map(row => renderRow(row));
+    let data = props.data;
+    data.sort((a, b) =>  a.threshold < b.threshold ? -1 : 1 );
+    let content = data.map(row => renderRow(row));
 
     return (
         <Container>

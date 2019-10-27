@@ -3,7 +3,7 @@ import { ResponsiveContainer, LineChart, XAxis, YAxis, CartesianGrid, Tooltip, L
 
 function Chart(props) {
 
-    var data = props.data.sort((a, b) => a.x > b.x)
+    var data = props.data.sort((a, b) => a.x > b.x ? 1 : -1);
 
     return (
         <div className="text-center">

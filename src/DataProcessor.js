@@ -39,7 +39,7 @@ export function prepareRpData(rawData) {
 
 class ProcessedRow {
     constructor(threshold, TP, FP, TN, FN) {
-        this.threshold = threshold;
+        this.threshold = parseFloat(threshold);
         this.TP = TP;
         this.FP = FP;
         this.TN = TN;
