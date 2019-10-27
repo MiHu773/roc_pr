@@ -3,8 +3,8 @@ import './App.css';
 import { Col, Row, Container } from "reactstrap";
 import DataInput from "./DataInput";
 
-import processRows, {prepareRocData, prepareRpData} from './DataProcessor';
-
+import processRows, { prepareRocData, prepareRpData } from './DataProcessor';
+import Chart from "./component/Chart"
 
 const columnsRes = [{ id: "state", display: "Stan", regex: "1|0" }, {
     id: "result",
@@ -12,8 +12,8 @@ const columnsRes = [{ id: "state", display: "Stan", regex: "1|0" }, {
     regex: "(0[.][0-9]+)|1|0"
 }];
 const rowsRes = [
-    { state: 0, result: 0.1 }, 
-    { state: 1, result: 0.4 }, 
+    { state: 0, result: 0.1 },
+    { state: 1, result: 0.4 },
     { state: 1, result: 0.9 },
     { state: 1, result: 0.8 },
     { state: 1, result: 0.7 },
@@ -25,9 +25,9 @@ const rowsRes = [
 
 const columnsThresh = [{ id: "threshold", display: "Próg", regex: "(0[.][0-9]+)|1|0" }];
 const rowsThresh = [
-    { threshold: 0.05 }, 
-    { threshold: 0.15 }, 
-    { threshold: 0.25 }, 
+    { threshold: 0.05 },
+    { threshold: 0.15 },
+    { threshold: 0.25 },
     { threshold: 0.35 },
     { threshold: 0.45 },
     { threshold: 0.55 },
@@ -73,10 +73,10 @@ class RocprDemo extends React.Component {
                     <Col>
                         <Row>
                             <Col>
-                                {/* roc */}
+                                <Chart title="Krzywa ROC" data={prepareRocData(data)} xLabel="1 - swoistość" yLabel="czułość" />
                             </Col>
                             <Col>
-                               {/* pr */}
+                                <Chart title="Krzywa PR" data={prepareRpData(data)} xLabel="czułość" yLabel="precyzja" />
                             </Col>
                         </Row>
                     </Col>

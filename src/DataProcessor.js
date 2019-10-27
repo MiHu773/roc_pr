@@ -21,11 +21,20 @@ function processRows(results, thresholds) {
 }
 
 export function prepareRocData(rawData) {
-    return rawData.map((data) => {return {x: 1 - data.specifity, y: data.recall}});
+    return rawData.map((data) => {
+        let sp =  1 - data.specifity.toFixed(2);
+        let rc = data.recall.toFixed(2);
+        return { x: sp, y: rc }
+    }
+    );
 }
 
 export function prepareRpData(rawData) {
-    return rawData.map((data) => {return {x: data.recall, y: data.precision }});
+    return rawData.map((data) => { 
+        let pr = data.precision.toFixed(2);
+        let rc = data.recall.toFixed(2);
+        return { x: rc, y: pr } 
+    });
 }
 
 class ProcessedRow {
