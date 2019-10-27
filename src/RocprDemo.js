@@ -43,6 +43,8 @@ class RocprDemo extends React.Component {
     render() {
 
         var data = processRows(this.state.rowsResults, this.state.rowsThresholds);
+        let rocData = prepareRocData(data);
+        let rpData = prepareRpData(data);
 
         return (
             <Container fluid>
@@ -75,11 +77,11 @@ class RocprDemo extends React.Component {
                                 </Col>
                                 <Col md="6" className="mb-4">
                                     <h5>Krzywa ROC</h5>
-                                    <Chart data={prepareRocData(data)} xLabel="1 - swoistość" yLabel="czułość" />
+                                    <Chart data={rocData} xLabel="1 - swoistość" yLabel="czułość" />
                                 </Col>
                                 <Col md="6" className="mb-4">
                                     <h5>Krzywa PR</h5>
-                                    <Chart data={prepareRpData(data)} xLabel="czułość" yLabel="precyzja" />
+                                    <Chart data={rpData} xLabel="czułość" yLabel="precyzja" />
                                 </Col>
                             </Row>
                         </Col>

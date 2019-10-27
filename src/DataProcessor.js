@@ -27,7 +27,8 @@ export function prepareRocData(rawData) {
             let rc = data.recall.toFixed(2);
             return { x: sp, y: parseFloat(rc) }
         }
-        ).sort(compareRoc);
+        ).filter(row => !isNaN(row.x) && !isNaN(row.y))
+        .sort(compareRoc);
 }
 
 export function prepareRpData(rawData) {
@@ -37,7 +38,8 @@ export function prepareRpData(rawData) {
             let rc = data.recall.toFixed(2);
             return { x: parseFloat(rc), y: parseFloat(pr) }
         }
-        ).sort(comparePr);
+        ).filter(row => !isNaN(row.x) && !isNaN(row.y))
+        .sort(comparePr);
 }
 
 function compareRoc(a, b) {
