@@ -1,30 +1,25 @@
 import React from 'react';
 import './DataInput.css';
-import { Container, InputGroup, Input, InputGroupAddon, Button, Row, Col } from 'reactstrap';
+import {Container, InputGroup, Input, InputGroupAddon, Button, Row, Col} from 'reactstrap';
 
 class DataInput extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.state.columns = props.columns;
         this.state.inputs = {};
-        this.state.columns.forEach((c) => this.state.inputs[c.id] = '');
-        this.state.rows = [];
-        this.state.rowId = 0;
-        this.props.rows.forEach((r) => this.state.rows.push(r));
+        this.props.columns.forEach((c) => this.state.inputs[c.id] = '');
     }
 
     addRow() {
-        let rows = [...this.state.rows];
+        let rows = [...this.props.rows];
         var newRow = {};
         let enable = true;
         for (let key in this.state.inputs) {
-            this.state.columns.forEach((c) => {
+            this.props.columns.forEach((c) => {
                 if (!c.id.localeCompare(key) == 0) return;
                 let re = new RegExp(c.regex);
                 if (!re.test(this.state.inputs[key])) {
-                    alert("Błąd danych wejściowych. Kolumna: " + c.display + " powinna spełniać: " + c.regex
-                    )
+                    alert("Błąd danych wejściowych. Kolumna: " + c.display + " powinna spełniać: " + c.regex);
                     enable = false;
                 }
             });
@@ -33,34 +28,32 @@ class DataInput extends React.Component {
         if (!enable) return;
         rows.push(newRow);
         this.props.parentHandler(rows);
-        this.setState({ rows: rows });
     }
 
     handleChange(columnName, e) {
         let input = this.state.inputs;
         input[columnName] = e.target.value;
-        this.setState({ inputs: input });
+        this.setState({inputs: input});
     }
 
     removeClicked(i) {
-        let rows = [...this.state.rows];
+        let rows = [...this.props.rows];
         rows.splice(i, 1);
         this.props.parentHandler(rows);
-        this.setState({ rows: rows });
     }
 
     render() {
         let inputFields = [];
         let rows = [];
-        this.state.columns.forEach((c) => {
-            inputFields.push(<Input key={c.id} placeholder={c.display} onChange={this.handleChange.bind(this, c.id)} />)
+        this.props.columns.forEach((c) => {
+            inputFields.push(<Input key={c.id} placeholder={c.display} onChange={this.handleChange.bind(this, c.id)}/>)
         });
 
-        for (let i = 0; i < this.state.rows.length; i++) {
+        for (let i = 0; i < this.props.rows.length; i++) {
             let rowData = [];
-            for (let j = 0; j < this.state.columns.length; j++) {
-                let columnID = this.state.columns[j].id;
-                rowData.push(<Col >{this.state.rows[i][columnID]}</Col>)
+            for (let j = 0; j < this.props.columns.length; j++) {
+                let columnID = this.props.columns[j].id;
+                rowData.push(<Col>{this.props.rows[i][columnID]}</Col>)
             }
             rows.push(
                 <Row className="justify-content-between row-data align-items-center">
@@ -75,7 +68,7 @@ class DataInput extends React.Component {
         return (
             <Container className="mb-10">
                 <Row>
-                    <Col >
+                    <Col>
                         <InputGroup>
                             {inputFields}
                             <InputGroupAddon addonType="append">
