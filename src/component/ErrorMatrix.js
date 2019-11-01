@@ -1,45 +1,105 @@
 import React from "react"
-import { Container, Row, Col } from "reactstrap"
+import { Table } from "reactstrap"
 
 import "./ErrorMatrix.css"
 
+function renderHeader(row) {
+    return (
+        <tr >
+            <th >
+                {row.threshold}
+            </th>
+            <th >
+                {row.TP}
+            </th>
+            <th >
+                {row.FP}
+            </th>
+            <th >
+                {row.FN}
+            </th>
+            <th >
+                {row.TN}
+            </th>
+            <th >
+                {row.recall}
+            </th>
+            <th >
+                {row.specifity}
+            </th>
+            <th >
+                {row.precision}
+            </th>
+        </tr>
+    )
+}
+
 function renderRow(row) {
     return (
-        <Row className="justify-content-md-center row-data">
-            <Col >
+        <tr >
+            <td >
                 {row.threshold}
-            </Col>
-            <Col >
+            </td>
+            <td >
                 {row.TP}
-            </Col>
-            <Col >
+            </td>
+            <td >
                 {row.FP}
-            </Col>
-            <Col >
+            </td>
+            <td >
                 {row.FN}
-            </Col>
-            <Col >
+            </td>
+            <td >
                 {row.TN}
-            </Col>
-        </Row>
+            </td>
+            <td >
+                {row.recall}
+            </td>
+            <td >
+                {row.specifity}
+            </td>
+            <td >
+                {row.precision}
+            </td>
+        </tr>
     )
 }
 
 function ErrorMatrix(props) {
 
-    let headers = { threshold: "Próg", TP: "Tp", FP: "Fp", TN: "Tn", FN: "Fn" }
+    let headers = {
+        threshold: "Próg", TP: "Tp", FP: "Fp", TN: "Tn", FN: "Fn",
+        recall: "czułość", specifity: "swoistość", precision: "precyzja"
+    }
     let data = props.data;
-    data.sort((a, b) =>  a.threshold < b.threshold ? -1 : 1 );
-    let content = data.map(row => renderRow(row));
+    data.sort((a, b) => a.threshold < b.threshold ? -1 : 1);
+    let content = data.map(row => renderRow(formatRow(row)));
 
     return (
-        <Container>
-            {renderRow(headers)}
-            <div className="table-data-container">
-                {content}
-            </div>
-        </Container>
+        <div className="table-data-container">
+            <Table>
+                <thead>
+                    {renderHeader(headers)}
+                </thead>
+
+                <tbody >
+
+                    {content}
+                </tbody>
+
+            </Table>
+        </div>
     )
+}
+
+function formatRow(row) {
+    Object.keys(row).forEach(key => row[key] = formatFloat(row[key]));
+    return row;
+}
+
+function formatFloat(val) {
+    let value =  parseFloat(val)
+    return isNaN(value) ? "-" : value.toFixed(3);
 }
 
 export default ErrorMatrix

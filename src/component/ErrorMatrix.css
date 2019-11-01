@@ -7,4 +7,24 @@
     overflow-x: hidden;
 }
 
+th {
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+    background: #ffff;
+  }
+
 }
+
+table {
+  table-layout: fixed;
+}
+
+.table th {
+    border-top: 0px solid
+}
+
+.table th, .table td{
+  padding: 0px 2px
+}
+
