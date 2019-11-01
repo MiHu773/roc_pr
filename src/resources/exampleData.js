@@ -3,6 +3,7 @@ const rowsRes = [
     { state: 0, result: 0.1 },
     { state: 1, result: 0.4 },
     { state: 1, result: 0.9 },
+    { state: 1, result: 0.9 },
     { state: 1, result: 0.8 },
     { state: 1, result: 0.7 },
     { state: 0, result: 0.6 },
