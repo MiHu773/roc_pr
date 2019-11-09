@@ -22,4 +22,6 @@ Buduje produkcyjną, zoptymalizowaną, statyczną wersję aplikacji do katalogu 
 
 * **Michał Grzeszczyk** - [MiHu773](https://github.com/MiHu773)
 * **Przemysław Wilczyński** - [pwilcz](https://github.com/pwilcz)
-Projekt stworzony przy pomocy [Create React App](https://github.com/facebook/create-react-app).
+Projekt stworzony przy pomocy [Create React App]
+
+(https://github.com/facebook/create-react-app).
