@@ -7,7 +7,7 @@ import processRows, { prepareRocData, prepareRpData } from './DataProcessor';
 import Chart from "./component/Chart"
 import ErrorMatrix from './component/ErrorMatrix';
 import { compareRows, compareThreshold } from './utils';
-
+import TooltipButton from "./component/TooltipButton"
 const columnsRes = [{ id: "state", display: "Stan", regex: "1|0" }, {
     id: "result",
     display: "Wynik testu",
@@ -59,16 +59,28 @@ class RocprDemo extends React.Component {
             <Container fluid>
                 <Row className="mb-3 justify-content-center">
                     <Col xs={{size: "auto"}}>
-                        <Button color="primary" onClick={this.fillExampleOnClickHandler}>Wstaw przykładowe dane</Button>
+                        <TooltipButton color="primary" onClick={this.fillExampleOnClickHandler} 
+                        tooltip="Wstawia przykładowe dane wartości wejściowych oraz progów" id="insertData">
+                            Wstaw przykładowe dane
+                        </TooltipButton>
                     </Col>
                     <Col  xs={{size: "auto"}}>
-                        <Button color="danger" onClick={this.clearAllOnClickHandler}>Usuń wszystkie dane</Button>
+                        <TooltipButton color="danger" onClick={this.clearAllOnClickHandler}
+                        tooltip="Usuwa wszystkie dane wejściowe i progi" id="removeData">
+                            Usuń wszystkie dane
+                        </TooltipButton>
                     </Col>
                     <Col  xs={{size: "auto"}}>
-                        <Button color="secondary" onClick={this.genThresholdOnClickHandler}>Generuj progi</Button>
+                        <TooltipButton color="secondary" onClick={this.genThresholdOnClickHandler}
+                        tooltip="Generuje wartości progów " id="genThreshold">
+                            Generuj progi
+                        </TooltipButton>
                     </Col>
                     <Col  xs={{size: "auto"}}>
-                        <Button color="info" onClick={this.sortOnClickHandler}>Sortuj</Button>
+                        <TooltipButton color="info" onClick={this.sortOnClickHandler}
+                        tooltip="Sortuje dane wejściowe oraz progi" id="sort">
+                            Sortuj
+                        </TooltipButton>
                     </Col>
                 </Row>
                     <Row className="text-center justify-content-around">
