@@ -6,6 +6,7 @@ import * as ExampleData from "./resources/exampleData";
 import processRows, { prepareRocData, prepareRpData } from './DataProcessor';
 import Chart from "./component/Chart"
 import ErrorMatrix from './component/ErrorMatrix';
+import { compareRows, compareThreshold } from './utils';
 
 const columnsRes = [{ id: "state", display: "Stan", regex: "1|0" }, {
     id: "result",
@@ -18,7 +19,7 @@ const columnsThresh = [{ id: "threshold", display: "Próg", regex: "(0[.][0-9]+)
 class RocprDemo extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { rowsResults: ExampleData.rowsRes, rowsThresholds: ExampleData.rowsThresh };
+        this.state = { rowsResults: [...ExampleData.rowsRes], rowsThresholds: [...ExampleData.rowsThresh] };
         this.resultsChangeHandler = this.resultsChangeHandler.bind(this);
         this.thresholdsChangeHandler = this.thresholdsChangeHandler.bind(this);
     }
@@ -32,11 +33,16 @@ class RocprDemo extends React.Component {
     }
 
     fillExampleOnClickHandler = () => {
-        this.setState({ rowsResults: ExampleData.rowsRes, rowsThresholds: ExampleData.rowsThresh });
+        this.setState({ rowsResults: [...ExampleData.rowsRes], rowsThresholds: [...ExampleData.rowsThresh] });
     }
 
     clearAllOnClickHandler = () => {
         this.setState({ rowsResults: [], rowsThresholds: [] });
+    }
+
+    sortOnClickHandler = () => {
+        this.resultsChangeHandler(this.state.rowsResults.sort(compareRows))
+        this.thresholdsChangeHandler(this.state.rowsThresholds.sort(compareThreshold))
     }
 
 
@@ -54,6 +60,12 @@ class RocprDemo extends React.Component {
                     </Col>
                     <Col  xs={{size: "auto"}}>
                         <Button color="danger" onClick={this.clearAllOnClickHandler}>Usuń wszystkie dane</Button>
+                    </Col>
+                    <Col  xs={{size: "auto"}}>
+                        <Button color="secondary" onClick={this.genThresholdOnClickHandler}>Generuj progi</Button>
+                    </Col>
+                    <Col  xs={{size: "auto"}}>
+                        <Button color="info" onClick={this.sortOnClickHandler}>Sortuj</Button>
                     </Col>
                 </Row>
                     <Row className="text-center justify-content-around">
