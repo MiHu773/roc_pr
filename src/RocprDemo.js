@@ -45,6 +45,9 @@ class RocprDemo extends React.Component {
         this.thresholdsChangeHandler(this.state.rowsThresholds.sort(compareThreshold))
     }
 
+    genThresholdOnClickHandler = () => {
+
+    }
 
     render() {
 
