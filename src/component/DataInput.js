@@ -23,7 +23,7 @@ class DataInput extends React.Component {
                     enable = false;
                 }
             });
-            newRow[key] = this.state.inputs[key];
+            newRow[key] = Number(this.state.inputs[key]);
         }
         if (!enable) return;
         rows.push(newRow);

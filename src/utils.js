@@ -13,5 +13,12 @@ function compareThreshold(a, b) {
     else return 0
 }
 
+function compareResults(a, b){
+    if (a.result < b.result) return -1
+    else if (a.result > b.result) return 1
+    else return 0
+}
+
 export {compareRows}
+export {compareResults}
 export {compareThreshold} 
