@@ -87,7 +87,7 @@ class RocprDemo extends React.Component {
                     </Col>
                     <Col xs={{size: "auto"}}>
                         <TooltipButton color="secondary" onClick={this.genThresholdOnClickHandler}
-                                       tooltip="Generuje wartości progów " id="genThreshold">
+                                       tooltip="Generuje wartości progów (produkujące wszystkie możliwe TP, FP, TN, FN) na podstawie podanych stanów" id="genThreshold">
                             Generuj progi
                         </TooltipButton>
                     </Col>
