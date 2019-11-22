@@ -9,10 +9,10 @@ import ErrorMatrix from './component/ErrorMatrix';
 import {compareRows, compareResults, compareThreshold} from './utils';
 import TooltipButton from "./component/TooltipButton"
 
-const columnsRes = [{id: "state", display: "Stan", regex: "1|0"}, {
+const columnsRes = [{id: "state", display: "Stan", regex: "^1|0$"}, {
     id: "result",
     display: "Wynik testu",
-    regex: "(0[.][0-9]+)|1|0"
+    regex: "^0[.][0-9]+$|^1$|^0$"
 }];
 
 const columnsThresh = [{id: "threshold", display: "Próg", regex: "(0[.][0-9]+)|1|0"}];
