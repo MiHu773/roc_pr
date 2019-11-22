@@ -53,13 +53,13 @@ function renderRow(row) {
                 {row.TN}
             </td>
             <td >
-                {row.recall}
+                {formatFloat(row.recall)}
             </td>
             <td >
-                {row.specifity}
+                {formatFloat(row.specifity)}
             </td>
             <td >
-                {row.precision}
+                {formatFloat(row.precision)}
             </td>
         </tr>
     )
@@ -73,7 +73,7 @@ function ErrorMatrix(props) {
     }
     let data = props.data;
     data.sort((a, b) => a.threshold < b.threshold ? -1 : 1);
-    let content = data.map(row => renderRow(formatRow(row)));
+    let content = data.map(row => renderRow(row));
 
     return (
         <div className="table-data-container">
@@ -92,14 +92,8 @@ function ErrorMatrix(props) {
     )
 }
 
-function formatRow(row) {
-    Object.keys(row).forEach(key => row[key] = formatFloat(row[key]));
-    return row;
-}
-
 function formatFloat(val) {
-    let value =  parseFloat(val)
-    return isNaN(value) ? "-" : value.toFixed(3);
+    return isNaN(val) ? "-" : val.toFixed(2);
 }
 
 export default ErrorMatrix
